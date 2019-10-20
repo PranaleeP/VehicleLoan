@@ -89,6 +89,95 @@ public class VehicleLoanServiceImpl implements VehicleLoanService{
 		}
 	}
 	
+
+@Override
+	public boolean calculateEMI(HttpServletRequest request) throws VehicleLoanException {
+
+		Double LoanAmount=(Double.parseDouble(request.getParameter("loanAmount")));
+		Double LoanTenure=(Double.parseDouble(request.getParameter("loanTenure")));
+		Double RateOfInterest=(Double.parseDouble(request.getParameter("rateOfInterest")));
+		
+		RateOfInterest=RateOfInterest/(12*100);
+		
+        //Double emi= (LoanAmount*RateOfInterest*Math.pow(1+RateOfInterest,LoanTenure))/ (Math.pow(1+RateOfInterest,LoanTenure)-1);
+
+        Double emi= (LoanAmount*RateOfInterest*( (Math.pow(1+RateOfInterest,LoanTenure))/ ((Math.pow(1+RateOfInterest,LoanTenure)-1))));
+		System.out.println(emi);
+        request.setAttribute("emi", emi);
+		
+		
+		return true;
+	}
+
+	@Override
+	public boolean adharUpload(DocumentsUpload doc, Map model,HttpServletRequest request) throws VehicleLoanException {
+
+		String filename="abc";
+		String path = "d:/uploads/";
+		 filename += doc.getPic().getOriginalFilename() ;
+		String finalPath = path + filename;
+		try{
+			doc.getPic().transferTo(new File(finalPath));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean panUpload(DocumentsUpload doc, Map model,HttpServletRequest request) throws VehicleLoanException {
+		
+		String filename="abc";
+		String path = "d:/uploads/";
+		 filename += doc.getPic().getOriginalFilename() ;
+		String finalPath = path + filename;
+		try{
+			doc.getPic().transferTo(new File(finalPath));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return true;
+	}
+
+	@Override
+	public boolean photoUpload(DocumentsUpload doc, Map model,HttpServletRequest request) throws VehicleLoanException {
+		String filename="abc";
+		String path = "d:/uploads/";
+		 filename+= doc.getPic().getOriginalFilename() ;
+		String finalPath = path +"-"+ filename;
+		try{
+			doc.getPic().transferTo(new File(finalPath));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return true;
+	}
+
+	@Override
+	public boolean salaryUpload(DocumentsUpload doc, Map model,HttpServletRequest request) throws VehicleLoanException {
+		
+		String path = "d:/uploads/";
+		String filename="abc";
+		filename += doc.getPic().getOriginalFilename() ;
+		
+		String finalPath = path + filename;
+		try{
+			doc.getPic().transferTo(new File(finalPath));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return true;
+	}
 		
 	}
 

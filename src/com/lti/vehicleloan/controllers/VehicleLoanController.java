@@ -101,5 +101,93 @@ public class VehicleLoanController {
 		}
 		return "Home";
 	}*/
+
+@RequestMapping("/emiCalculatorPage")
+	public String calculateEmiPage() 
+	{
+		
+		return "CalculateEMI";
+	}
+	
+	@RequestMapping("/emiCalculator")
+	public String calculateEMI(HttpServletRequest request) 
+	{
+	
+		try {
+			services.calculateEMI(request);
+		} 
+	catch (VehicleLoanException e)
+		{
+			e.printStackTrace();
+		}
+
+		return "SuccessInsert";
+	}
+	
+	@RequestMapping("/documentsUploadPage")
+	public String documentsUploadPage() 
+	{
+		
+		return "UploadDocuments";
+	}
+	@RequestMapping(path="/adharDocumentUpload",method = RequestMethod.POST)
+	public String adharUpload(DocumentsUpload doc, Map model,HttpServletRequest request) 
+	{
+		
+		
+		try {
+			services.adharUpload(doc,model,request);
+		} 
+	catch (VehicleLoanException e)
+		{
+			e.printStackTrace();
+		}
+
+		return "UploadDocuments";
+	}
+	
+	
+	@RequestMapping(path="/panDocumentUpload",method = RequestMethod.POST)
+	public String panUpload(DocumentsUpload doc, Map model,HttpServletRequest request) 
+	{
+		
+		try {
+			services.panUpload(doc,model,request);
+		} catch (VehicleLoanException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "UploadDocuments";
+	}
+	
+	@RequestMapping(path="/photoDocumentUpload",method = RequestMethod.POST)
+	public String photoUpload(DocumentsUpload doc, Map model,HttpServletRequest request) 
+	{
+		
+		try {
+			services.photoUpload(doc,model,request);
+		} catch (VehicleLoanException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "UploadDocuments";
+	}
+	
+	@RequestMapping(path="/salaryDocumentUpload",method = RequestMethod.POST)
+	public String salaryUpload(DocumentsUpload doc, Map model,HttpServletRequest request) 
+	{
+
+		
+		try {
+			services.salaryUpload(doc,model,request);
+		} catch (VehicleLoanException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "UploadDocuments";
+	}
 	}
 

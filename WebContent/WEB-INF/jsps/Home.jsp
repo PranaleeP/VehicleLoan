@@ -21,6 +21,9 @@
 <tr>
 <td>
 <a href="registerPage">Register</a>
+<a href="emiCalculatorPage">Calculate EMI</a><br>
+<a href="documentsUploadPage">Upload Documents</a><br>
+
 
 </td>
 </tr>

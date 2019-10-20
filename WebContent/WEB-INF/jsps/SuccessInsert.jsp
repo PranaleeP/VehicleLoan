@@ -9,5 +9,6 @@
 <body>
 <h1>INSERTED SUCCESSFULLY!!!!!!!!! </h1>
 <a href="home">HOME</a>
+<%=request.getAttribute("emi") %>
 </body>
 </html>

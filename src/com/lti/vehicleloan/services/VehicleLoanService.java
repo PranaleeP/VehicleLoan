@@ -11,4 +11,11 @@ public interface VehicleLoanService {
 	//public Register registerUser(Register reg) throws VehicleLoanException;
 	public Register addUser(HttpServletRequest request) throws VehicleLoanException;
 	public boolean loginuser(HttpServletRequest request) throws VehicleLoanException;
+
+	public boolean calculateEMI(HttpServletRequest request)throws VehicleLoanException;
+	public boolean adharUpload(DocumentsUpload doc, Map model,HttpServletRequest request)throws VehicleLoanException;
+	public boolean panUpload(DocumentsUpload doc, Map model,HttpServletRequest request)throws VehicleLoanException;
+	public boolean photoUpload(DocumentsUpload doc, Map model,HttpServletRequest request)throws VehicleLoanException;
+	public boolean salaryUpload(DocumentsUpload doc, Map model,HttpServletRequest request)throws VehicleLoanException;
+
 }
